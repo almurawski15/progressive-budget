@@ -1,1 +1,1 @@
-# budget-tracker
+# progressive-budget
