@@ -6,11 +6,11 @@ PWA (Progressive Web App) Budget Tracker that has online/offline functionality.
 ## Screenshot
 The following image shows the web application's appearance and funtionality:
 
-![budget-tracker](public/assets/budget-tracker-snapshot.PNG)
+![progressive-budget](public/assets/budget-tracker-snapshot.png)
 
 ## Deployed Project Location:
 
-    * Page published at: 
+* Page published at: 
 
 ## Technologies 
 
