@@ -11,37 +11,36 @@ const FILES_TO_CACHE = [
 const CACHE_NAME = 'static-cache-v1';
 const DATA_CACHE_NAME = 'data-cache-v2';
 
+//install event listener
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then((cache => {
+      .then(cache => {
         console.log("Your files have been pre-cached!");
-        return cache.addAll(FILES_TO_CACHE));
+        return cache.addAll(FILES_TO_CACHE);
       })
   );
 
   self.skipWaiting();
 });
 
-// The activate handler takes care of cleaning up old caches.
+// Activate handler to take care of cleaning up old caches 
 self.addEventListener('activate', (event) => {
-  const currentCaches = [PRECACHE, RUNTIME];
   event.waitUntil(
-    caches
-      .keys()
-      .then((cacheNames) => {
-        return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
-      })
-      .then((cachesToDelete) => {
+    caches.keys().then(cacheNames => {
         return Promise.all(
-          cachesToDelete.map((cacheToDelete) => {
-            return caches.delete(cacheToDelete);
+          cacheNames.map(clears => {
+            if (clears !== CACHE_NAME && clears !== DATA_CACHE_NAME) {
+              console.log("Old data removed", clears);
+              return caches.delete(clears);
+            }
           })
         );
       })
-      .then(() => self.clients.claim())
   );
+
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
