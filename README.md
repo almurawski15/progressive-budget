@@ -10,7 +10,7 @@ The following image shows the web application's appearance and funtionality:
 
 ## Deployed Project Location:
 
-* Page published at: 
+* Page published at: https://progressive-budget-hwk.herokuapp.com/ 
 
 ## Technologies 
 
